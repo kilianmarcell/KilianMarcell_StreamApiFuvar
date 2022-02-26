@@ -12,5 +12,7 @@ public class Main {
         System.out.println("A lista hossza: " + f.getListaCount());
         System.out.println("A 6185-ös taxis bevétele: " + f.countBevetel(6185) +
                 " dollár, " + f.countFuvar(6185) + " fuvarból állt.");
+        System.out.println("A taxisok összesen " + f.getTavolsag() +
+                " mérföld távolságot tettek meg.");
     }
 }

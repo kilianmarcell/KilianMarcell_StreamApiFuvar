@@ -47,4 +47,10 @@ public class Fuvar {
                 .mapToDouble(Taxi::getBevetel)
                 .sum();
     }
+
+    public double getTavolsag() {
+        return lista.stream()
+                .mapToDouble(Taxi::getTav)
+                .sum();
+    }
 }
