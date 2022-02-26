@@ -116,4 +116,18 @@ public class Fuvarok {
                 .filter(f ->  f.getIndulas().getMonthValue() == 12 && f.getIndulas().getDayOfMonth() == 24)
                 .count();
     }
+
+    public double getFizetett() {
+        return lista.stream()
+                .filter(f ->  f.getIndulas().getMonthValue() == 12 && f.getIndulas().getDayOfMonth() == 31)
+                .mapToDouble(Fuvar::getViteldij)
+                .count();
+    }
+
+    public double getBorravalo() {
+        return lista.stream()
+                .filter(f ->  f.getIndulas().getMonthValue() == 12 && f.getIndulas().getDayOfMonth() == 31)
+                .mapToDouble(Fuvar::getBorravalo)
+                .count();
+    }
 }

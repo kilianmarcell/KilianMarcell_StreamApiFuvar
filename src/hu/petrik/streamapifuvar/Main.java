@@ -51,5 +51,9 @@ public class Main {
         //10. feladat
         System.out.printf("10. feladat\n" +
                         "December 24-én %d fuvar volt.\n%n", f.getFuvarokSzama());
+
+        //11. feladat
+        System.out.printf("11. feladat\n" +
+                "December 31-én %.2f arányban adtak borravalót a fuvarok után.\n%n", (f.getBorravalo() / f.getFizetett()));
     }
 }
