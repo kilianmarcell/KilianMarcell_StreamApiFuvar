@@ -66,4 +66,11 @@ public class Fuvarok {
                 .max(Comparator.comparingDouble(Fuvar::getBorravalo))
                 .get();
     }
+
+    public double getTavId(int id) {
+        return lista.stream()
+                .filter(t -> t.getAzonosito() == id)
+                .mapToDouble(Fuvar::getTav)
+                .sum();
+    }
 }
