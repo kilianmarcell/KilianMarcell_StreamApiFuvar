@@ -40,5 +40,12 @@ public class Main {
         System.out.printf("8. feladat\n" +
                 "Szerepel az 1452-es azonosítójú taxi az adatok között?: %b\n%n",
                 (f.getSzerepelE(1452)? "Igen": "Nem"));
+
+        //9. feladat
+        System.out.printf("9. feladat\n" +
+                "Időben a 3 legrövidebb utazás adatai:\n\n");
+        for (Fuvar fuvar: f.getIdobenUtazasok(3)) {
+            System.out.println(fuvar + "\n");
+        }
     }
 }
