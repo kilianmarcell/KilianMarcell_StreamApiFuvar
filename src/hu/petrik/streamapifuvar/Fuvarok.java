@@ -110,4 +110,10 @@ public class Fuvarok {
                 .limit(i)
                 .collect(Collectors.toList());
     }
+
+    public long getFuvarokSzama() {
+        return lista.stream()
+                .filter(f ->  f.getIndulas().getMonthValue() == 12 && f.getIndulas().getDayOfMonth() == 24)
+                .count();
+    }
 }

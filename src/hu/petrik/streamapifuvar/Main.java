@@ -47,5 +47,9 @@ public class Main {
         for (Fuvar fuvar: f.getIdobenUtazasok(3)) {
             System.out.println(fuvar + "\n");
         }
+
+        //10. feladat
+        System.out.printf("10. feladat\n" +
+                        "December 24-én %d fuvar volt.\n%n", f.getFuvarokSzama());
     }
 }
