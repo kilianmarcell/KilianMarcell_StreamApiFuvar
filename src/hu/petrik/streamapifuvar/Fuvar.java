@@ -1,7 +1,6 @@
 package hu.petrik.streamapifuvar;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,5 +24,14 @@ public class Fuvar {
 
         br.close();
         fr.close();
+    }
+
+    public List<Taxi> getLista() {
+        return lista;
+    }
+
+    public long getListaCount() {
+        return this.lista.stream()
+                .count();
     }
 }

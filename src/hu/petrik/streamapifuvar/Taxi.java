@@ -19,9 +19,9 @@ public class Taxi {
         this.azonosito = Integer.parseInt(adatok[0]);
         this.indulas = LocalDateTime.parse(adatok[1], formazo);
         this.utazas_ideje = Integer.parseInt(adatok[2]);
-        this.tav = Double.parseDouble(adatok[3]);
-        this.viteldij = Double.parseDouble(adatok[4]);
-        this.borravalo = Double.parseDouble(adatok[5]);
+        this.tav = Double.parseDouble(adatok[3].replace(',','.'));
+        this.viteldij = Double.parseDouble(adatok[4].replace(',','.'));
+        this.borravalo = Double.parseDouble(adatok[5].replace(',','.'));
         this.fizetesModja = adatok[6];
     }
 
