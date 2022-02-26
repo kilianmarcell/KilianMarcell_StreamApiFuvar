@@ -73,6 +73,10 @@ public class Taxi {
         this.borravalo = borravalo;
     }
 
+    public double getBevetel() {
+        return getViteldij() + getBorravalo();
+    }
+
     public String getFizetesModja() {
         return fizetesModja;
     }

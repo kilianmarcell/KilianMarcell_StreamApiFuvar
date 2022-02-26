@@ -34,4 +34,17 @@ public class Fuvar {
         return this.lista.stream()
                 .count();
     }
+
+    public long countFuvar(int id) {
+        return lista.stream()
+                .filter(t -> t.getAzonosito() == id)
+                .count();
+    }
+
+    public double countBevetel(int id) {
+        return lista.stream()
+                .filter(t -> t.getAzonosito() == id)
+                .mapToDouble(Taxi::getBevetel)
+                .sum();
+    }
 }
