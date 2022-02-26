@@ -90,9 +90,15 @@ public class Fuvarok {
                 .mapToInt(Fuvar::getUtazas_ideje)
                 .sum();
     }
+
     public double getHibasakBevetele() {
         return getHibas()
                 .mapToDouble(Fuvar::getBevetel)
                 .sum();
+    }
+
+    public boolean getSzerepelE(int id) {
+        return lista.stream()
+                .anyMatch(f -> f.getAzonosito() == id);
     }
 }

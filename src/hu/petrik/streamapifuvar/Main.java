@@ -33,7 +33,12 @@ public class Main {
 
         //7. feladat
         System.out.printf("7. feladat\n" +
-                "Hibás adatok száma: %d, időtartama: %d, bevétele: %.2f",
+                "Hibás adatok száma: %d, időtartama: %d, bevétele: %.2f\n%n",
                 f.getHibasakSzama(), f.getHibasakIdotartama(), f.getHibasakBevetele());
+
+        //8. feladat
+        System.out.printf("8. feladat\n" +
+                "Szerepel az 1452-es azonosítójú taxi az adatok között?: %b\n%n",
+                (f.getSzerepelE(1452)? "Igen": "Nem"));
     }
 }
