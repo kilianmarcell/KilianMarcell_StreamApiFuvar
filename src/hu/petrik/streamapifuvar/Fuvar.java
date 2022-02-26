@@ -1,56 +1,98 @@
 package hu.petrik.streamapifuvar;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Fuvar {
-    private List<Taxi> lista;
+    private int azonosito;
+    private LocalDateTime indulas;
+    private int utazas_ideje;
+    private double tav;
+    private double viteldij;
+    private double borravalo;
+    private String fizetesModja;
 
-    public Fuvar(String fajlnev) throws IOException {
-        lista = new ArrayList<>();
-        FileReader fr = new FileReader(fajlnev);
-        BufferedReader br = new BufferedReader(fr);
+    private DateTimeFormatter formazo = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        br.readLine();
-        String s = br.readLine();
-
-        while (s != null) {
-            lista.add(new Taxi(s));
-            s = br.readLine();
-        }
-
-        br.close();
-        fr.close();
+    public Fuvar(String sor) {
+        String[] adatok = sor.split(";");
+        this.azonosito = Integer.parseInt(adatok[0]);
+        this.indulas = LocalDateTime.parse(adatok[1], formazo);
+        this.utazas_ideje = Integer.parseInt(adatok[2]);
+        this.tav = Double.parseDouble(adatok[3].replace(',','.'));
+        this.viteldij = Double.parseDouble(adatok[4].replace(',','.'));
+        this.borravalo = Double.parseDouble(adatok[5].replace(',','.'));
+        this.fizetesModja = adatok[6];
     }
 
-    public List<Taxi> getLista() {
-        return lista;
+    public int getAzonosito() {
+        return azonosito;
     }
 
-    public long getListaCount() {
-        return this.lista.stream()
-                .count();
+    public void setAzonosito(int azonosito) {
+        this.azonosito = azonosito;
     }
 
-    public long countFuvar(int id) {
-        return lista.stream()
-                .filter(t -> t.getAzonosito() == id)
-                .count();
+    public LocalDateTime getIndulas() {
+        return indulas;
     }
 
-    public double countBevetel(int id) {
-        return lista.stream()
-                .filter(t -> t.getAzonosito() == id)
-                .mapToDouble(Taxi::getBevetel)
-                .sum();
+    public void setIndulas(LocalDateTime indulas) {
+        this.indulas = indulas;
     }
 
-    public double getTavolsag() {
-        return lista.stream()
-                .mapToDouble(Taxi::getTav)
-                .sum();
+    public int getUtazas_ideje() {
+        return utazas_ideje;
+    }
+
+    public void setUtazas_ideje(int utazas_ideje) {
+        this.utazas_ideje = utazas_ideje;
+    }
+
+    public double getTav() {
+        return tav;
+    }
+
+    public void setTav(int tav) {
+        this.tav = tav;
+    }
+
+    public double getViteldij() {
+        return viteldij;
+    }
+
+    public void setViteldij(double viteldij) {
+        this.viteldij = viteldij;
+    }
+
+    public double getBorravalo() {
+        return borravalo;
+    }
+
+    public void setBorravalo(double borravalo) {
+        this.borravalo = borravalo;
+    }
+
+    public double getBevetel() {
+        return getViteldij() + getBorravalo();
+    }
+
+    public String getFizetesModja() {
+        return fizetesModja;
+    }
+
+    public void setFizetesModja(String fizetesModja) {
+        this.fizetesModja = fizetesModja;
+    }
+
+    @Override
+    public String toString() {
+        return "Fuvarok azonosítója: " + azonosito + "\n" +
+                "Indulás: " + indulas + "\n" +
+                "Utazás ideje: " + utazas_ideje + "\n" +
+                "Táv: " + tav + "\n" +
+                "Viteldíj: " + viteldij + "\n" +
+                "Borravaló: " + borravalo + " dollár\n" +
+                "Fizetés módja: " + fizetesModja;
     }
 }
