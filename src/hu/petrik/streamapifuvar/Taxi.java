@@ -1,24 +1,28 @@
 package hu.petrik.streamapifuvar;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Taxi {
     private int azonosito;
     private LocalDateTime indulas;
     private int utazas_ideje;
-    private int tav;
+    private double tav;
     private double viteldij;
     private double borravalo;
     private String fizetesModja;
 
-    public Taxi(int azonosito, LocalDateTime indulas, int utazas_ideje, int tav, double viteldij, double borravalo, String fizetesModja) {
-        this.azonosito = azonosito;
-        this.indulas = indulas;
-        this.utazas_ideje = utazas_ideje;
-        this.tav = tav;
-        this.viteldij = viteldij;
-        this.borravalo = borravalo;
-        this.fizetesModja = fizetesModja;
+    private DateTimeFormatter formazo = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    public Taxi(String sor) {
+        String[] adatok = sor.split(";");
+        this.azonosito = Integer.parseInt(adatok[0]);
+        this.indulas = LocalDateTime.parse(adatok[1], formazo);
+        this.utazas_ideje = Integer.parseInt(adatok[2]);
+        this.tav = Double.parseDouble(adatok[3]);
+        this.viteldij = Double.parseDouble(adatok[4]);
+        this.borravalo = Double.parseDouble(adatok[5]);
+        this.fizetesModja = adatok[6];
     }
 
     public int getAzonosito() {
@@ -45,7 +49,7 @@ public class Taxi {
         this.utazas_ideje = utazas_ideje;
     }
 
-    public int getTav() {
+    public double getTav() {
         return tav;
     }
 
