@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Fuvarok {
     private List<Fuvar> lista;
@@ -71,6 +72,27 @@ public class Fuvarok {
         return lista.stream()
                 .filter(t -> t.getAzonosito() == id)
                 .mapToDouble(Fuvar::getTav)
+                .sum();
+    }
+
+    public Stream<Fuvar> getHibas() {
+        return lista.stream()
+                .filter(f -> f.getUtazas_ideje() > 0 && f.getViteldij() > 0.0 && f.getTav() == 0);
+    }
+
+    public long getHibasakSzama() {
+        return getHibas()
+                .count();
+    }
+
+    public long getHibasakIdotartama() {
+        return getHibas()
+                .mapToInt(Fuvar::getUtazas_ideje)
+                .sum();
+    }
+    public double getHibasakBevetele() {
+        return getHibas()
+                .mapToDouble(Fuvar::getBevetel)
                 .sum();
     }
 }
